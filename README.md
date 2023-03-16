@@ -8,6 +8,7 @@
 Requirements:
 - [autobuild][]
 - [cmake][]
+- [cygwin][] (Windows)
 
 Clone this repository and its submodules:
 ```
@@ -50,3 +51,4 @@ git commit -am "Updated assimp to ..."
 [assimp]: https://github.com/assimp/assimp
 [autobuild]: https://github.com/secondlife/autobuild
 [cmake]: https://cmake.org/
+[cygwin]: https://www.cygwin.com/
