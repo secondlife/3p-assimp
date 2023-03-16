@@ -4,7 +4,6 @@ set -ex
 
 CMAKE_OPTs="-DCMAKE_BUILD_TYPE=Release"
 ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-NPROC=${AUTOBUILD_CPU_COUNT:-$(nproc)}
 
 # Step into staging directory
 mkdir -p $ROOT/build
@@ -14,6 +13,11 @@ cd $ROOT/build
 mkdir -p lib/release
 mkdir -p include/assimp
 mkdir -p LICENSES 
+
+autobuild source_environment > .env
+. .env
+
+NPROC=${AUTOBUILD_CPU_COUNT:-$(nproc)}
 
 case "$AUTOBUILD_PLATFORM" in
   windows*)
