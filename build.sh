@@ -22,8 +22,16 @@ NPROC=${AUTOBUILD_CPU_COUNT:-$(nproc)}
 case "$AUTOBUILD_PLATFORM" in
   windows*)
     load_vsvars
+
+    cmake_arch="x64"
+    case "$AUTOBUILD_ADDRSIZE" in
+      32)
+        cmake_arch="Win32"
+        ;;
+    esac
+
     # Configure and build
-    cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" ../assimp $CMAKE_OPTS
+    cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$cmake_arch" ../assimp $CMAKE_OPTS
     cmake --build . --config Release
     # Shuffle files into autobuild destdir structure
     mv bin/Release/assimp-*.dll ./lib/release/assimp.dll
