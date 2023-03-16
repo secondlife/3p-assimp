@@ -29,6 +29,7 @@ case "$AUTOBUILD_PLATFORM" in
     make -j$NPROC
     # Shuffle files into autobuild destdir structure
     mv bin/libassimp.so.*.* ./lib/release/libassimp.so
+  ;;
   darwin*)
     # Configure and build
     cmake ../assimp $CMAKE_OPTS
