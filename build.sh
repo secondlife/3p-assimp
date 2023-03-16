@@ -21,6 +21,7 @@ NPROC=${AUTOBUILD_CPU_COUNT:-$(nproc)}
 
 case "$AUTOBUILD_PLATFORM" in
   windows*)
+    load_vsvars
     # Configure and build
     cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" ../assimp $CMAKE_OPTS
     cmake --build . --config Release
