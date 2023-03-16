@@ -4,12 +4,13 @@ set -ex
 
 CMAKE_OPTs="-DCMAKE_BUILD_TYPE=Release"
 ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+NPROC=${AUTOBUILD_CPU_COUNT:-$(nproc)}
 
 # Step into staging directory
 mkdir -p $ROOT/build
 cd $ROOT/build
 
-# Create destdir structure and copy headers
+# Create destdir structure
 mkdir -p lib/release
 mkdir -p include/assimp
 mkdir -p LICENSES 
@@ -22,12 +23,19 @@ case "$AUTOBUILD_PLATFORM" in
     # Shuffle files into autobuild destdir structure
     mv bin/Release/assimp-*.dll ./lib/release/assimp.dll
   ;;
-  *)
+  linux*)
     # Configure and build
     cmake ../assimp $CMAKE_OPTS
-    make -j$(nproc)
+    make -j$NPROC
     # Shuffle files into autobuild destdir structure
     mv bin/libassimp.so.*.* ./lib/release/libassimp.so
+  darwin*)
+    # Configure and build
+    cmake ../assimp $CMAKE_OPTS
+    make -j$NPROC
+    # Shuffle files into autobuild destdir structure
+    ls bin
+    mv bin/libassimp.dylib.* ./lib/release/libassimp.dylib
   ;;
 esac
 
