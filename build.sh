@@ -35,8 +35,7 @@ case "$AUTOBUILD_PLATFORM" in
     cmake ../assimp $CMAKE_OPTS
     make -j$NPROC
     # Shuffle files into autobuild destdir structure
-    ls bin
-    mv bin/libassimp.dylib.* ./lib/release/libassimp.dylib
+    mv bin/libassimp.*.*.*.dylib ./lib/release/libassimp.dylib
   ;;
 esac
 
