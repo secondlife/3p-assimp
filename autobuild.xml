@@ -64,7 +64,7 @@
           </map>
           <key>manifest</key>
           <array>
-            <string>lib/release/libassimp.so</string>
+            <string>lib/release/libassimp.dylib</string>
           </array>
           <key>name</key>
           <string>darwin</string>
