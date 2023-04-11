@@ -48,6 +48,31 @@ git commit -am "Updated assimp to ..."
 2. Merge into `main`
 3. [Create a new release](https://github.com/secondlife/3p-assimp/releases)
 
+### Build Troubleshooting
+
+Some previously encountered issues:
+1.  When running:
+```
+$ autobuild configure
+Warning: no --id argument or AUTOBUILD_BUILD_ID environment variable specified;
+    using SCM version (0.0.1-dev7.g12ebb06), which may not be unique
+ERROR: no configuration for build configuration 'RelWithDebInfo' found; one may
+be created using 'autobuild edit build'
+For more information: try re-running your command with --verbose or --debug
+```
+Fix with:
+```
+$ export AUTOBUILD_CONFIGURATION=default
+```
+
+2.  Error with autobuild build:
+```
+<lots of output, build.sh completes OK>
+fatal: No names found, cannot describe anything.
+<python traceback with failure result from the git describe command>
+```
+This may be due to an older version of git, possibly caused by the version that Cygwin will install.   Try removing the git package from Cygwin and configure your PATH so the Windows install of git will be used instead.
+
 [assimp]: https://github.com/assimp/assimp
 [autobuild]: https://github.com/secondlife/autobuild
 [cmake]: https://cmake.org/
