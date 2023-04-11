@@ -11,7 +11,7 @@ cd $ROOT/build
 
 # Create destdir structure
 mkdir -p lib/release
-mkdir -p include/assimp
+mkdir -p include/assimp/Compiler
 mkdir -p LICENSES 
 
 autobuild source_environment > .env
@@ -34,7 +34,8 @@ case "$AUTOBUILD_PLATFORM" in
     cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$cmake_arch" ../assimp $CMAKE_OPTS
     cmake --build . --config Release
     # Shuffle files into autobuild destdir structure
-    mv bin/Release/assimp-*.dll ./lib/release/assimp.dll
+    mv bin/Release/assimp-*.dll ./lib/release/
+    mv ./lib/release/assimp-*.lib ./lib/release/
   ;;
   linux*)
     # Configure and build
@@ -54,6 +55,9 @@ esac
 
 # Copy headers
 cp ../assimp/include/assimp/*.h include/assimp
+cp ../assimp/include/assimp/*.hpp include/assimp
+cp ../assimp/include/assimp/*.inl include/assimp
+cp ../assimp/include/assimp/Compiler/*.h include/assimp/Compiler/
 
 # Copy license
 cp ../assimp/LICENSE  LICENSES/assimp.txt

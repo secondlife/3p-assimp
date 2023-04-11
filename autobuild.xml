@@ -40,6 +40,9 @@
           <key>manifest</key>
           <array>
             <string>include/assimp/*.h</string>
+            <string>include/assimp/*.hpp</string>
+            <string>include/assimp/*.inl</string>
+            <string>include/assimp/Compiler/*.h</string>
             <string>LICENSES/assimp.txt</string>
           </array>
           <key>name</key>
@@ -112,7 +115,8 @@
           </map>
           <key>manifest</key>
           <array>
-            <string>lib/release/assimp.dll</string>
+            <string>lib/release/assimp-vc143-mt.dll</string>
+            <string>lib/release/assimp-vc143-mt.lib</string>
           </array>
           <key>name</key>
           <string>windows</string>
