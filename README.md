@@ -2,6 +2,7 @@
 
 [Autobuild][autobuild] bottling of the [Open Asset Import Library][assimp]
 (assimp).
+This is being added to the SL viewer in summer 2023 for animation importing.
 
 ## Development
 
@@ -24,6 +25,7 @@ git submodule update
 
 Build and package:
 ```
+export AUTOBUILD_CONFIGURATION=default
 autobuild configure
 autobuild build
 autobuild package
