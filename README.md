@@ -44,7 +44,7 @@ git commit -am "Updated assimp to ..."
 
 ### Publishing new versions
 
-1. Create a PR
+1. Create a Pull Request (this is required for complete release notes)
 2. Merge into `main`
 3. [Create a new release](https://github.com/secondlife/3p-assimp/releases)
 
@@ -73,6 +73,14 @@ fatal: No names found, cannot describe anything.
 ```
 This may be due to an older version of git, possibly caused by the version that Cygwin will install.   Try removing the git package from Cygwin and configure your PATH so the Windows install of git will be used instead.
 
+3.   Grab download manually
+curl can get the package needed if you are having trouble installing this package
+```
+cd $AUTOBUILD_INSTALLABLE_CACHE
+curl -v -L -O https://github.com/secondlife/3p-assimp/releases/download/v5.2.5-r3/assimp-windows64-5.2.5-r3.tar.bz2
+```
+   
+5.   
 [assimp]: https://github.com/assimp/assimp
 [autobuild]: https://github.com/secondlife/autobuild
 [cmake]: https://cmake.org/
