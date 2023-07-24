@@ -4,6 +4,10 @@
 (assimp).
 This is being added to the SL viewer in summer 2023 for animation importing.
 
+## Latest Release
+
+You can use this package by using the [Release information for existing builds](https://github.com/secondlife/3p-assimp/releases)
+
 ## Development
 
 Requirements:
